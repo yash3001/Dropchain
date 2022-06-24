@@ -8,7 +8,7 @@ class Navbar extends Component {
       <nav className="navbar navbar-dark bg-dark p-0 text-monospace">
         <a
           className="navbar-brand col-sm-3 col-md-2 mr-0"
-          href="https://yash3001.github.io/yash30/"
+          href="https://github.com/yash3001/Dropchain"
           target="_blank"
           rel="noopener noreferrer"
         >

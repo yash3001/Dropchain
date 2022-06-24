@@ -11,7 +11,9 @@ const ipfs = ipfsClient({
   host: "ipfs.infura.io",
   port: 5001,
   protocol: "https",
-}); // leaving out the arguments will default to these values
+});
+
+const deletedFilesId = [];
 
 class App extends Component {
   async componentWillMount() {
@@ -48,12 +50,27 @@ class App extends Component {
       const filesCount = await dstorage.methods.fileCount().call();
       this.setState({ filesCount });
       // Load files&sort by the newest
+      // let tempFiles = [];
       for (var i = filesCount; i >= 1; i--) {
         const file = await dstorage.methods.files(i).call();
+        // let flag = true;
+        // for (let i = 0; i < deletedFilesId.length; i++) {
+        //   if (deletedFilesId[i] == file.fileId) {
+        //     flag = false;
+        //     break;
+        //   }
+        // }
+        // if (flag) {
+        //   tempFiles.push(file);
+        // }
         this.setState({
           files: [...this.state.files, file],
         });
       }
+      // this.setState({
+      //   files: tempFiles,
+      // });
+      // console.log(this.state.files);
     } else {
       window.alert("DStorage contract not deployed to detected network.");
     }
@@ -109,6 +126,7 @@ class App extends Component {
             name: null,
           });
           window.location.reload();
+          // this.loadBlockchainData();
         })
         .on("error", (e) => {
           window.alert("Error");
@@ -120,10 +138,11 @@ class App extends Component {
   deleteHandler = (id) => {
     let new_files = [];
     for (let i = 0; i < this.state.files.length; i++) {
-      if (this.state.files[i].fileId != id) {
+      if (this.state.files[i].fileId !== id) {
         new_files.push(this.state.files[i]);
       }
     }
+    deletedFilesId.push(id);
     this.setState({
       files: new_files,
     });
@@ -147,20 +166,20 @@ class App extends Component {
   render() {
     return (
       <div>
-         <Background> 
-        <Navbar account={this.state.account} />
-        {this.state.loading ? (
-          <div id="loader" className="text-center mt-5">
-            <p>Loading...</p>
-          </div>
-        ) : (
-          <Main
-            files={this.state.files}
-            captureFile={this.captureFile}
-            uploadFile={this.uploadFile}
-            delete={this.deleteHandler}
-          />
-        )}
+        <Background>
+          <Navbar account={this.state.account} />
+          {this.state.loading ? (
+            <div id="loader" className="text-center mt-5">
+              <p>Loading...</p>
+            </div>
+          ) : (
+            <Main
+              files={this.state.files}
+              captureFile={this.captureFile}
+              uploadFile={this.uploadFile}
+              delete={this.deleteHandler}
+            />
+          )}
         </Background>
       </div>
     );

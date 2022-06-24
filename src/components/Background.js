@@ -4,12 +4,10 @@ import "./Background.css";
 class Background extends Component{
     render(){
         return(
+            
+            
             <div className="home">
-                <div>{this.props.children}</div>
-                <div class="banner-text" >
-                    
-                </div>
-    
+                
                 <div className="animation-area">
                     <ul className="box-area">
                         <li></li>
@@ -20,7 +18,14 @@ class Background extends Component{
                     </ul>
           
                 </div>
+
+                <div className="banner-text" >
+                    {this.props.children}
+                </div>
+               
+                
           </div>
+        
         )
     }
 }
