@@ -1,5 +1,5 @@
-const DStorage = artifacts.require("DStorage");
+const Dropchain = artifacts.require("Dropchain");
 
-module.exports = function(deployer) {
-  deployer.deploy(DStorage);
+module.exports = function (deployer) {
+  deployer.deploy(Dropchain);
 };

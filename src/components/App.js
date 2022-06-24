@@ -1,4 +1,4 @@
-import DStorage from "../abis/DStorage.json";
+import Dropchain from "../abis/Dropchain.json";
 import React, { Component } from "react";
 import Navbar from "./Navbar";
 import Main from "./Main";
@@ -41,18 +41,21 @@ class App extends Component {
     this.setState({ account: accounts[0] });
     // Network ID
     const networkId = await web3.eth.net.getId();
-    const networkData = DStorage.networks[networkId];
+    const networkData = Dropchain.networks[networkId];
     if (networkData) {
       // Assign contract
-      const dstorage = new web3.eth.Contract(DStorage.abi, networkData.address);
-      this.setState({ dstorage });
+      const dropchain = new web3.eth.Contract(
+        Dropchain.abi,
+        networkData.address
+      );
+      this.setState({ dropchain });
       // Get files amount
-      const filesCount = await dstorage.methods.fileCount().call();
+      const filesCount = await dropchain.methods.fileCount().call();
       this.setState({ filesCount });
       // Load files&sort by the newest
       // let tempFiles = [];
       for (var i = filesCount; i >= 1; i--) {
-        const file = await dstorage.methods.files(i).call();
+        const file = await dropchain.methods.files(i).call();
         // let flag = true;
         // for (let i = 0; i < deletedFilesId.length; i++) {
         //   if (deletedFilesId[i] == file.fileId) {
@@ -72,7 +75,7 @@ class App extends Component {
       // });
       // console.log(this.state.files);
     } else {
-      window.alert("DStorage contract not deployed to detected network.");
+      window.alert("Dropchain contract not deployed to detected network.");
     }
   }
 
@@ -110,7 +113,7 @@ class App extends Component {
       if (this.state.type === "") {
         this.setState({ type: "none" });
       }
-      this.state.dstorage.methods
+      this.state.dropchain.methods
         .uploadFile(
           result[0].hash,
           result[0].size,
@@ -152,7 +155,7 @@ class App extends Component {
     super(props);
     this.state = {
       account: "",
-      dstorage: null,
+      dropchain: null,
       files: [],
       loading: false,
       type: null,

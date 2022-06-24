@@ -1,7 +1,7 @@
 pragma solidity ^0.5.0;
 
-contract DStorage {
-  string public name = 'DStorage';
+contract Dropchain {
+  string public name = 'Dropchain';
   uint public fileCount = 0;
   mapping(uint => File) public files;
 
