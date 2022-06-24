@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { convertBytes } from "./helpers";
 import moment from "moment";
+import "./Main.css";
 
 class Main extends Component {
   render() {
@@ -12,7 +13,7 @@ class Main extends Component {
             className="col-lg-12 ml-auto mr-auto"
             style={{ maxWidth: "1024px" }}
           >
-            <div className="content">
+            <div className="content loly">
               {this.props.show ? (
                 <>
                   <div
@@ -50,7 +51,7 @@ class Main extends Component {
                       <input
                         type="file"
                         onChange={this.props.captureFile}
-                        className="text-monospace"
+                        className="text-monospace "
                         style={{ color: "#C9ADA7" }}
                       />
                       <button
