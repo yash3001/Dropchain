@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Navbar from "./Navbar";
 import Main from "./Main";
 import Web3 from "web3";
+import Background from "./Background";
 import "./App.css";
 
 const ipfsClient = require("ipfs-http-client");
@@ -146,6 +147,7 @@ class App extends Component {
   render() {
     return (
       <div>
+         <Background> 
         <Navbar account={this.state.account} />
         {this.state.loading ? (
           <div id="loader" className="text-center mt-5">
@@ -159,6 +161,7 @@ class App extends Component {
             delete={this.deleteHandler}
           />
         )}
+        </Background>
       </div>
     );
   }

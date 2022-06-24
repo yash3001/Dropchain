@@ -5,20 +5,20 @@ import moment from "moment";
 class Main extends Component {
   render() {
     return (
-      <div className="container-fluid mt-5 text-center">
+      <div className="container-fluid mt-5 text-center" >
         <div className="row">
           <main
             role="main"
             className="col-lg-12 ml-auto mr-auto"
             style={{ maxWidth: "1024px" }}
           >
-            <div className="content">
+            <div className="content"  >
               <p>&nbsp;</p>
               <div
-                className="card mb-3 mx-auto bg-dark"
-                style={{ maxWidth: "512px" }}
+                className="card mb-3 mx-auto "
+                style={{ maxWidth: "512px" , backgroundColor: "#22223B" }}
               >
-                <h2 className="text-white text-monospace bg-dark">
+                <h2 className=" text-monospace " style={{color:"#C9ADA7"}} >
                   <b>
                     <ins>Share File</ins>
                   </b>
@@ -29,6 +29,8 @@ class Main extends Component {
                     const description = this.fileDescription.value;
                     this.props.uploadFile(description);
                   }}
+                  
+
                 >
                   <div className="form-group">
                     <br></br>
@@ -46,9 +48,10 @@ class Main extends Component {
                   <input
                     type="file"
                     onChange={this.props.captureFile}
-                    className="text-white text-monospace"
+                    className="text-monospace"
+                    style={{color:"#C9ADA7"}}
                   />
-                  <button type="submit" className="btn-primary btn-block">
+                  <button type="submit" className="btn-primary btn-block" style={{ backgroundColor: '#9A8C98', border: 'none' }} >
                     <b>Upload!</b>
                   </button>
                 </form>
@@ -59,7 +62,7 @@ class Main extends Component {
                 style={{ width: "1000px", maxHeight: "450px" }}
               >
                 <thead style={{ fontSize: "18px" }}>
-                  <tr className="bg-dark text-white">
+                  <tr  style={{color: "#C9ADA7" , backgroundColor:"#22223B" }}>
                     <th scope="col" style={{ width: "10px" }}>
                       ID
                     </th>
