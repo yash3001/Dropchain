@@ -67,7 +67,7 @@ class App extends Component {
         //   tempFiles.push(file);
         // }
         this.setState({
-          files: [...this.state.files, file],
+          files: [file, ...this.state.files],
         });
       }
       // this.setState({
@@ -151,6 +151,12 @@ class App extends Component {
     });
   };
 
+  showHandler = () => {
+    this.setState({
+      show: !this.state.show,
+    });
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -160,10 +166,12 @@ class App extends Component {
       loading: false,
       type: null,
       name: null,
+      show: true,
     };
     this.uploadFile = this.uploadFile.bind(this);
     this.captureFile = this.captureFile.bind(this);
     this.deleteHandler = this.deleteHandler.bind(this);
+    this.showHandler = this.showHandler.bind(this);
   }
 
   render() {
@@ -181,6 +189,8 @@ class App extends Component {
               captureFile={this.captureFile}
               uploadFile={this.uploadFile}
               delete={this.deleteHandler}
+              show={this.state.show}
+              showHandler={this.showHandler}
             />
           )}
         </Background>
