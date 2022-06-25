@@ -6,27 +6,26 @@ import "./Main.css";
 class Main extends Component {
   render() {
     return (
-      <div className="container-fluid mt-5 text-center">
+      <div className="container-fluid text-center box">
         <div className="row">
           <main
             role="main"
-            className="col-lg-12 ml-auto mr-auto"
-            style={{ maxWidth: "1024px" }}
+            className="col-lg-12"
+            style={{ width: "auto", maxHeight: "60vh", overflow: "scroll" }}
           >
-            <div className="content loly">
+            <div className="loly">
               {this.props.show ? (
                 <>
-                  <div
-                    className="card mb-3 mx-auto "
-                    style={{ maxWidth: "512px", backgroundColor: "#22223B" }}
-                  >
+                  <div className="card" style={{ backgroundColor: "#22223B" }}>
                     <h2
                       className=" text-monospace "
-                      style={{ color: "#C9ADA7" }}
+                      style={{
+                        color: "#C9ADA7",
+                        fontSize: "30px",
+                        padding: "30px",
+                      }}
                     >
-                      <b>
-                        <ins>Share File</ins>
-                      </b>
+                      <b>Share File To Blockchain!!!</b>
                     </h2>
                     <form
                       onSubmit={(event) => {
@@ -36,7 +35,6 @@ class Main extends Component {
                       }}
                     >
                       <div className="form-group">
-                        <br></br>
                         <input
                           id="fileDescription"
                           type="text"
@@ -44,7 +42,7 @@ class Main extends Component {
                             this.fileDescription = input;
                           }}
                           className="form-control text-monospace"
-                          placeholder="description..."
+                          placeholder="File Description..."
                           required
                         />
                       </div>
@@ -54,10 +52,17 @@ class Main extends Component {
                         className="text-monospace "
                         style={{ color: "#C9ADA7" }}
                       />
+                      <div>
+                        <br></br>
+                      </div>
                       <button
                         type="submit"
-                        className="btn-primary btn-block"
-                        style={{ backgroundColor: "#9A8C98", border: "none" }}
+                        className="btn-primary btn-block btn-lg"
+                        style={{
+                          backgroundColor: "#9A8C98",
+                          border: "none",
+                          fontSize: "30px",
+                        }}
                       >
                         <b>Upload!</b>
                       </button>

@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import Identicon from "identicon.js";
 import box from "../box.png";
+import "./Navbar.css";
 
 class Navbar extends Component {
   render() {
     return (
-      <nav className="navbar navbar-dark bg-dark p-0 text-monospace">
+      <nav className="navbar navbar-dark bg-dark p-1 text-monospace">
         <a
           className="navbar-brand col-sm-3 col-md-2 mr-0"
           href="https://github.com/yash3001/Dropchain"
