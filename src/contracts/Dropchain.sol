@@ -52,4 +52,19 @@ contract Dropchain {
     // Trigger an event
     emit FileUploaded(fileCount, _fileHash, _fileSize, _fileType, _fileName, _fileDescription, now, msg.sender);
   }
+
+  function deleteFile(uint _fileId) public {
+
+    require(_fileId>=0);
+    
+    uint ind = 0;
+    for(uint i=0; i<fileCount; i++){
+      if(files[i].fileId != _fileId){
+        files[ind] = files[i];
+        ind++;
+      }
+    }
+
+    fileCount--;
+  }
 }

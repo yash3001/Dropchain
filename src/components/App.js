@@ -125,7 +125,7 @@ class App extends Component {
         .send({ from: this.state.account })
         .on("transactionHash", (hash) => {
           this.setState({
-            loading: false,
+            // loading: false,
             type: null,
             name: null,
           });
@@ -146,10 +146,20 @@ class App extends Component {
         new_files.push(this.state.files[i]);
       }
     }
+    this.setState({ loading: true });
     deletedFilesId.push(id);
     this.setState({
       files: new_files,
     });
+    this.state.dropchain.methods
+      .deleteFile(id)
+      .send({ from: this.state.account })
+      .on("transactionHash", (hash) => {
+        window.location.reload();
+      })
+      .on("error", () => {
+        window.location.reload();
+      });
   };
 
   showHandler = () => {
