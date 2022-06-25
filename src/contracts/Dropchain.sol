@@ -46,9 +46,8 @@ contract Dropchain {
   }
 
   function deleteFile(uint _fileId) public {
-
     require(_fileId>=0);
-    
+
     uint ind = 0;
     for(uint i=0; i<fileCount; i++){
       if(files[i].fileId != _fileId){

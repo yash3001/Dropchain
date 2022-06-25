@@ -12,6 +12,7 @@ class Navbar extends Component {
           href="https://github.com/yash3001/Dropchain"
           target="_blank"
           rel="noopener noreferrer"
+          style={{ flexBasis: "5%" }}
         >
           <img src={box} width="30" height="30" className="align-top" alt="" />
           Dropchain
