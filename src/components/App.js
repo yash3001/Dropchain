@@ -1,6 +1,7 @@
 import Dropchain from "../abis/Dropchain.json";
 import React, { Component } from "react";
 import Navbar from "./Navbar";
+import Loading from "./Loading";
 import Main from "./Main";
 import Web3 from "web3";
 import Background from "./Background";
@@ -180,9 +181,7 @@ class App extends Component {
         <Background>
           <Navbar account={this.state.account} />
           {this.state.loading ? (
-            <div id="loader" className="text-center mt-5">
-              <p>Loading...</p>
-            </div>
+            <Loading />
           ) : (
             <Main
               files={this.state.files}
